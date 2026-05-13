@@ -1,83 +1,47 @@
-# **COGS 189 - Five Brains (Linguistic Interference EEG Project)**
+# EEG Linguistic Interference
 
-This repository contains the analysis pipeline for our **COGS 189 final project**, which investigates how different types of background audio influence cognitive processing. Using EEG recordings, we analyze how **music with understood lyrics, non-understood lyrics, instrumental music, and speech** affect cognitive load during listening task.
+EEG study examining how different types of background audio affect cognitive load during a listening task.
 
-Cogntive engagement is estimated using **frequency-domain EEG features**, specifically **Alpha (8-12 Hz)** and **Beta (13-30 Hz)** band power.
+COGS 189 Final Project · UC San Diego · 2026 · Team: Five Brains
 
----
+## Research Question
+
+Does the type of background music — lyrics you understand vs. foreign lyrics vs. instrumental vs. speech — affect cognitive engagement during a task?
+
+## Method
+
+- 18 participants, 64-channel EEG at 512 Hz
+- Four audio conditions: comprehensible lyrics, foreign lyrics, instrumental, speech
+- Extracted frontal Beta (13-30 Hz) and parietal Alpha (8-12 Hz) band power
+- Computed Engagement Index (Beta / Alpha ratio)
+- Repeated-measures ANOVA + LOSO cross-validation
+
+## Result
+
+No significant condition effect (p ≈ 0.258). Classification accuracy near chance (~0.509). Simple bandpower features are likely not sensitive enough to capture linguistic interference across individuals.
 
 ## Analysis Pipeline
 
-The project follows this workflow:
+1. Data loading and validation
+2. Experimental design verification
+3. Feature extraction (Alpha / Beta band power)
+4. Engagement metric computation
+5. Statistical analysis and visualization
 
-1. **Data Loading**
-   - Locate and verify preprocessed EEG subject files.
+## Project Structure
 
-2. **Dataset Validation**
-   - Confirm trial counts, sampling rates, and EEG dimensions.
-
-3. **Experimental Design Verification**
-   - Quantitatively check whether the experiment follows a blocked or interleaved structure.
-
-4. **Feature Extraction**
-   - Compute Alpha and Beta band power from EEG signals.
-
-5. **Engagement Metric**
-   - Calculate an **Engagement Index (Beta / Alpha)**.
-
-6. **Statistical Analysis**
-   - Compare engagement levels across listening conditions.
-
----
-
-# Project Structure
-
-```
-COGS189_Five_Brains/
-│
+eeg-linguistic/
 ├── notebooks/
 │   ├── 01_setup_validation.ipynb
 │   └── 02_feature_stats_ml_visual.ipynb
-│
-├── Preprocessed/                  # Preprocessed EEG subject files (.mat)
-├── requirements.txt               # Python dependencies
-├── README.md                      # Project overview and instructions
-└── .gitignore
-```
+├── requirements.txt
+└── README.md
 
----
+## Dataset
 
-### **Team Members**
-
-| Name                | PID       | Email                  |
-| ------------------- | --------- | ---------------------- |
-| **Sabine Loaiza**   | A17834935 | sloaizachable@ucsd.edu |
-| **Avalon Andresen** | A17794154 | aandresen@ucsd.edu     |
-| **Bryan Ramirez**   | A17302269 | b9ramirez@ucsd.edu     |
-| **Kayla Li**        | A18630941 | chl324@ucsd.edu        |
-| **JiJi Choi**       | A18554073 | jic169@ucsd.edu        |
-
-### **Getting Started**
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/BryanR-17/COGS189_Five_Brains.git
-   cd COGS189_Five_Brains
-   ```
-
-### **Contributing**
-
-1. Make changes and push to your branch:
-   ```bash
-   git add .
-   git commit -m "Your commit message"
-   git push origin <branch-name>
-   ```
-
-### **Dataset**
-
-We use the public **“EEG data of continuous listening of music and speech”** dataset from Aalborg University:
-
-```bash
+EEG data of continuous listening of music and speech — Aalborg University:
 https://vbn.aau.dk/en/datasets/eeg-data-of-continuous-listening-of-music-and-speech/
-```
+
+## Team
+
+Five Brains — UC San Diego, COGS 189
